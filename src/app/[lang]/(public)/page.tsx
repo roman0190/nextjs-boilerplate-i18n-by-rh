@@ -1,5 +1,4 @@
 import { getTranslations, setRequestLocale } from "next-intl/server"; // ← getTranslations import করো
-import { redirect } from "next/navigation";
 
 interface Props {
   params: Promise<{ lang: string }>;
@@ -8,9 +7,8 @@ interface Props {
 export default async function HomePage({ params }: Props) {
   const { lang } = await params;
   setRequestLocale(lang);
-  redirect("/home");
 
-  const t = await getTranslations();
+  const t = await getTranslations(); 
 
   return (
     <div className="min-h-screen bg-black text-white">
